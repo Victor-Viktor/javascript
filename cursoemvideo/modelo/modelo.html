@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora do Dia</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            background-color: aquamarine;
+            color: white;
+            font: normal 12pt arial;
+        }
+        img{
+            border-radius: 50%;
+            width: 180px;
+            height: 180px;
+        }
+        #quadro{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            border-radius: 12px;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.247);
+            background-color: white;
+            color: black;
+            width: 400px;
+            height: 250px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hora do Dia</h1>
+    <section id="quadro">
+        <p id="txtn1"> Agora são 9 horas</p>
+        <div>
+            <img src="manha.jpg" alt="Foto manhã" id="img">
+        </div>
+    </section>
+    <footer>CursoemVídeo</footer>
+    <script>
+        var agora = new Date()
+        hora = agora.getHours()
+        var txt = window.document.querySelector('#txtn1')
+        var imag = window.document.querySelector('#img')
+
+        if (hora < 12){
+            txt.innerHTML = `Agora são exatamente ${hora} horas`
+            window.document.body.style.background = '#CCBC92'
+        }else if(hora <= 18){
+            txt.innerHTML = `Agora são exatamente ${hora} horas`
+            window.document.body.style.background = '#A67A64'
+            imag.src = 'tarde.jpg'
+        }else{
+            txt.innerHTML = `Agora são exatamente ${hora} horas`
+            window.document.body.style.background = '#484A49'
+            imag.src = 'noite.jpg'
+        }
+
+    </script>
+</body>
+</html>
