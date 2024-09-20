@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salto Numerico</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgb(70, 142, 236);
+            color: white;
+            font: normal 11pt arial;
+        }
+        section{
+            background-color: white;
+            color: black;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.356);
+            padding: 12px 8px;
+            width: 400px;
+            border-radius: 12px;
+        }
+        p{
+            margin: 12px;
+        }
+        #btn{
+            margin-left: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contador</h1>
+    <section>
+        <p>Início: <input type="number" name="inicio" id="inicio"></p>
+        <p>Fim: <input type="number" name="fim" id="fim"></p>
+        <p>Passo: <input type="number" name="passo" id="passo"></p>
+        <input id="btn" type="button" value="Contar" onclick="contar()">
+        <p id="res">Aguardando input...</p>
+    </section>
+    <script>
+        function contar(){
+            var i = window.document.querySelector('#inicio')
+            var iv = Number(i.value)
+            var f = window.document.querySelector('#fim')
+            var fv = Number(f.value)
+            var p = window.document.querySelector('#passo')
+            var pv = Number(p.value)
+            var r = window.document.querySelector('#res')
+            r.innerHTML =''
+
+            if (i.value.length == 0||f.value.length == 0||p.value.length == 0){
+                window.alert('Valor inválido adicionado')
+            }else{
+                if(pv <= 0){
+                    window.alert('Passo inválido! considerando Passo = 1')
+                    pv = 1
+                }
+                if(iv < fv){
+                    for(c = iv;c <= fv;c += pv){
+                        r.innerHTML += `${c} 👉🏿`
+                    }
+                }else{
+                    for(c = iv;c >= fv;c -= pv){
+                        r.innerHTML += `${c} 👉🏿`
+                    }
+                }
+                r.innerHTML += '🏴‍☠️'
+            }
+
+            
+        }
+    </script>
+</body>
+</html>
