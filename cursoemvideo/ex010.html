@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detran</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            height: 100vh;
+            background-color: lightgreen;
+            color: white;
+            display: flex;
+            justify-content: center;
+            
+        }
+        #container{
+            background-color: rgb(28, 131, 18);
+            padding:12px;
+            margin-top: 25px;
+            border-radius: 25px;
+            width: fit-content;
+            height: fit-content;
+        }
+        #container > div{
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Sistema de multas</h1>
+        Velocidade do carro: <input type="number" name="txtvel" id="txtvel"> Km/h
+        <input type="button" value="Verificar" onclick="verificar()">
+        <div id="res">Computando...</div>
+    </div>
+
+    <script>
+        function verificar(){
+            let vel = window.document.querySelector('input#txtvel')
+            v = Number(vel.value)
+            if(v > 60){
+                let res = window.document.querySelector('div#res')
+                res.innerHTML = 'Você está acima do limite permitido de Velocidade! MULTADO.'
+            }else{
+                let res = window.document.querySelector('div#res')
+                res.innerHTML = 'Você está dentro do limite permitido de velocidade!'
+            }
+        }
+    </script>
+</body>
+</html>

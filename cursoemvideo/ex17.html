@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Número: <input type="number" name="num" id="num"> <button onclick="calcular()">Gerar Tabuada</button></p>
+    <select name="" id="selTab" size="10"></select>
+    <p id="res">Valores aqui!</p>
+    <script>
+        function calcular(){
+            let numS = document.getElementById('num')
+            let n = Number(numS.value)
+            let tab = document.getElementById('selTab')
+            let r = document.getElementById('res')
+            r.innerHTML = ''
+
+            if(numS.value.length == 0){
+                window.alert('Informe um valor antes de calcular')
+            }else{
+                for(let c = 1;c <= 10;c++){
+                    let conta = n * c
+                    let item = document.createElement('option')
+                    item.text = `${n} x ${c} = ${n * c}`
+                    tab.appendChild(item)
+                    r.innerHTML += `${n} x ${c} = ${conta} <br>`
+                }
+            }
+        }
+    </script>
+</body>
+</html>

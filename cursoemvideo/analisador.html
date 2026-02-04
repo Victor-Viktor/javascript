@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisador de Números</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            font: normal 12pt arial;
+            background-color: #3B82D1;
+            color: white;
+        }
+        #mainContainer{
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            color: black;
+            background-color: white;
+            width: fit-content;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.336);
+        }
+        #dadosSelect{
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 190px;
+        }
+        .btn{
+            width: 100px;
+        }
+        p{
+            margin-top:8px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Analisador de Números 3000</h1>
+    <section id="mainContainer">
+        <div>
+            <label for="num">Número (Entre 1 e 100):</label> <input type="number" name="num" id="num"> <input
+                type="button" value="Adicionar" class="btn" onclick="adicionar()">
+        </div>
+        <div id="dadosSelect">
+            <select name="selPainel" id="selPainel" size="10"></select>
+            <input type="button" value="Finalizar" class="btn" onclick="finalizar()">
+        </div>
+    </section>
+    <footer>
+
+    </footer>
+    <script>
+        let nVal = []
+
+        let mc = document.querySelector('#mainContainer')
+        let res = document.createElement('p')
+        mc.appendChild(res)
+
+        function adicionar() {
+            let n = document.querySelector('#num')
+
+
+            if(n.value <=100 && n.value >=1){
+                if (nVal.indexOf(Number(n.value)) != -1) {
+                    window.alert('Esse número já se encontra no banco de dados!')
+                } else {
+                    nVal.push(Number(n.value))
+                    let painel = document.querySelector('#selPainel')
+                    let item = document.createElement('option')
+                    item.text = `O número ${Number(n.value)} foi adicionado.`
+                    painel.appendChild(item)
+                    n.value = ''
+                    n.focus()
+                    res.innerHTML = ''
+                }
+            }else if(Number(n.value.length == 0)){
+                window.alert('Digite um número entre 1 e 100!')
+            }else{
+                window.alert('Número não está entre 1 e 100!')
+            }
+        }
+
+        function finalizar() {
+            let maior = nVal[0]
+            let menor = nVal[0]
+
+            for (i in nVal) {
+                if (maior < nVal[i]) {
+                    maior = nVal[i]
+                }
+                if (menor > nVal[i]) {
+                    menor = nVal[i]
+                }
+            }
+
+            let soma = 0
+            for (c = 0; c < nVal.length; c++) {
+                soma += nVal[c]
+            }
+            let media = soma / nVal.length
+
+            res.innerHTML = `Ao todo, temos ${nVal.length} números cadastrados`
+            res.innerHTML += `<p>O maior valor informado foi ${maior}</p>`
+            res.innerHTML += `<p>O menor valor informado foi ${menor}</p>`
+            res.innerHTML += `<p>Somando todos os valores, temos ${soma}</p>`
+            res.innerHTML += `<p>A média dos valores digitados é ${media}</p>`
+        }
+    </script>
+</body>
+
+</html>

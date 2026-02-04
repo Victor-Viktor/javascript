@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Idade</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #3D85D4;
+            color: white;
+            font: normal 12pt arial;
+        }
+        h1{
+            margin-top: 20px;
+        }
+        #container{
+            background-color: white;
+            width: 400px;
+            height: 330px;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.349);
+            color: black;
+
+        }
+        img{
+            border-radius: 50%;
+            width: 210px;
+            height: 200px;
+        }
+        #info{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+        }
+        .uinput{
+            margin-top: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Verificador de Idade</h1>
+    <section id="container">
+        <div class="uinput">
+            Ano de Nascimento: 
+            <input type="number" name="data" id="data">
+        </div>
+        <div class="uinput">
+
+            Sexo:
+            <input type="radio" name="gender" id="masc" checked>
+            <label for="masc">Masculino</label>
+
+            <input type="radio" name="gender" id="fem">
+            <label for="fem">Feminino</label>
+
+        </div>
+        <input type="button" value="Verify" class="uinput" onclick="verificar()">
+        <article id="info">
+            <p id="text">Detectamos um homen de 24 anos</p>
+            <img src="M_Young.jpg" alt="Default" id="img">
+        </article>
+    </section>
+    <footer>CursoemVídeo</footer>
+
+    <script>
+        
+       
+        function verificar(){
+        let txt = window.document.querySelector('#text')
+        let imagu = window.document.querySelector('#img')
+        let ano = window.document.getElementById('data')
+        let sex = window.document.getElementsByName('gender')
+        let gen = ''
+        let anov = Number(ano.value)
+        let agora = new Date()
+        let anoint = agora.getFullYear()
+        let idade = anoint - anov
+
+        if(sex[0].checked){
+
+            if (idade < 11){
+                txt.innerHTML = `Detectamos uma criança (Homem) de ${idade} anos`
+            imagu.src = 'baby.jpeg'
+            }else if (idade < 18){
+                txt.innerHTML = `Detectamos um adolecente de ${idade} anos`
+                imagu.src = 'M_Teen.jpeg'
+            }else if(idade < 65){
+                txt.innerHTML = `Detectamos um Homen de ${idade} anos`
+                imagu.src = 'M_Young.jpg'
+            }else if(idade <= 100){
+                txt.innerHTML = `Detectamos um idoso de ${idade} anos`
+                imagu.src = 'M_Old.jpg'
+            }else{
+                txt.innerHTML = 'Idade invalida'
+
+            }
+        }else{
+            if (idade > 0 && idade < 11){
+                txt.innerHTML = `Detectamos uma criança (Mulher) de ${idade} anos`
+            imagu.src = 'baby.jpeg'
+            }else if (idade < 18){
+                txt.innerHTML = `Detectamos uma adolecente de ${idade} anos`
+                imagu.src = 'F_Teen.webp'
+            }else if(idade < 65){
+                txt.innerHTML = `Detectamos uma Mulher de ${idade} anos`
+                imagu.src = 'F_Young.jpg'
+            }else if(idade <= 100){
+                txt.innerHTML = `Detectamos um idosa de ${idade} anos`
+                imagu.src = 'F_Old.jpg'
+            }else{
+                txt.innerHTML = 'Idade invalida'
+            }
+        }
+
+        console.log(gen)
+        console.log(anoint)
+        console.log(anov)
+        }
+    </script>
+</body>
+</html>
